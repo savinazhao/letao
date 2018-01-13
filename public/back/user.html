@@ -76,18 +76,13 @@
         </tr>
         </thead>
          <tbody>
-         <tr>
-           <td width='10%'>1</td>
-           <td width='30%'>snow</td>
-           <td width='30%'>14790090459</td>
-           <td width='20%'>启用</td>
-           <td width='10%'>
-             <button class='btn btn-danger btn-sm'>禁用</button>
-             <button class='btn btn-success btn-sm'>启用</button>
-           </td>
-         </tr>
+         <!--挖坑-->
          </tbody>
        </table>
+      <div class='text-right'>
+        <!--分页的盒子-->
+        <ul id='paginator'></ul>
+      </div>
     </div>
   </div>
 </div>
@@ -112,12 +107,55 @@
     </div>
   </div>
 </div>
+ <!--禁用启用的模态框-->
+<div class="modal fade " id='userModal' >
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ><span>&times;</span></button>
+        <h4 class="modal-title">温馨提示</h4>
+      </div>
+      <div class="modal-body">
+        <p class='text-danger'>
+          <span class='glyphicon glyphicon-info-sign'></span>
+  
+          你确定要执行此操作？
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary btn_confirm">确定</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
+<!--准备用户表格的模板-->
+<script type='text/template' id='tpl'>
+  {{ each rows $v $i}}
+  <tr>
+    <td width='10%'>{{(page-1)*size+$i+1}}</td>
+    <td width='30%'>{{$v.username}}</td>
+    <td width='30%'>{{$v.mobile}}</td>
+    <td width='20%'>{{$v.isDelete==1?'启用':'禁用'}}</td>
+    <td width='10%' data-id='{{$v.id}}'>
+      {{ if $v.isDelete==1}}
+      <button class='btn btn-danger btn-sm'>禁用</button>
+      {{ else if $v.isDelete == 0}}
+      <button class='btn btn-success btn-sm'>启用</button>
+      {{/if}}
+    </td>
+  </tr>
+  {{/each}}
+</script>
 <script src='libs/jquery/jquery.js'></script>
 <script src='libs/bootstrap/js/bootstrap.js'></script>
 <script src='libs/bootstrap-validator/js/bootstrapValidator.js'></script>
+<script src='libs/bootstrap-paginator/bootstrap-paginator.js'></script>
 <script src='libs/nprogress/nprogress.js'></script>
 <script src='libs/echarts/echarts.min.js'></script>
+<script src='libs/artTemplate/template-web.js'></script>
 <script src='js/common.js'></script>
+<script src='js/user.js'></script>
