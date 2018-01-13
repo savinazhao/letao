@@ -92,6 +92,7 @@ a:hover,a:active {
   /*background-color: pink;*/
   padding-left: 180px;
   transition: all 1s;
+  padding-top: 70px;
 }
 .lt_main.now {
   padding-left: 0;
