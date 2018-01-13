@@ -49,7 +49,7 @@ $(function () {
   $form.on('success.form.bv',function (e) {
     //阻止表单提交的默认事件
     e.preventDefault();
-    //ajax请求
+    // ajax请求
    $.ajax({
       type:'post',
       url:'/employee/employeeLogin',
@@ -63,10 +63,11 @@ $(function () {
         //{"error":1000,"message":"用户名不存在! "}
         // {"error":1001,"message":"密码错误！"}
         if(info.error==1000) {
+          // updateStatus() 表单校验插件的方法
           $form.data('bootstrapValidator').updateStatus('username','INVALID','callback');
         }
         if(info.error==1001) {
-        $form.data('bootstrapValidator').updateStatus('password','INVALID','callback');
+          $form.data('bootstrapValidator').updateStatus('password','INVALID','callback');
         }
         
       }
@@ -76,6 +77,8 @@ $(function () {
   // 给reset重置按钮注册点击事件
   $('button[type="reset"]').on('click',function () {
     // 重置表单数据和表单验时的图标
+    // resetForm 表单校验插件的重置方法
     $form.data('bootstrapValidator').resetForm(true);
   })
+  
 })
