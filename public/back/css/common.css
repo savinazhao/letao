@@ -116,3 +116,7 @@ a:hover,a:active {
   float: right;
   /*background-color: pink;*/
 }
+.table.table-bordered td {
+  text-align: center;
+  vertical-align: middle;
+}
