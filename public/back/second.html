@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>乐淘管理系统-首页</title>
+  <title>乐淘管理系统-二级分类</title>
   <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.css">
   <link rel="stylesheet" href="libs/bootstrap-validator/css/bootstrapValidator.css">
   <link rel="stylesheet" href="libs/nprogress/nprogress.css">
@@ -22,9 +22,9 @@
     <ul>
       <li>
         <a href="user.html">
-        <span class='glyphicon glyphicon-user'></span>
+          <span class='glyphicon glyphicon-user'></span>
           用户管理
-      </a>
+        </a>
       </li>
       <li>
         <a href="javascript:;">
@@ -60,12 +60,32 @@
   <div class="container-fluid">
     <!--路径导航-->
     <ol class="breadcrumb">
-      <li ><a href="#">管理系统</a></li>
-      <li ><a href="#">分类管理</a></li>
-      <li class='active'>二级分类</li>
+      <li><a href="#">管理系统</a></li>
+      <li><a href="#">分类管理</a></li>
+      <li class="active">二级分类</li>
     </ol>
     <!--内容区域-->
     <div class="lt_content">
+      <button class='btn btn-default btn-add mt_20'>添加分类</button>
+      <table class='table table-bordered'>
+        <thead>
+        <tr>
+          <td width='10%'>序号</td>
+          <td width='30%'>一级分类名称</td>
+          <td width='30%'>二级分类名称</td>
+          <td width='30%'>二级分类的LOGO</td>
+        </tr>
+        </thead>
+        <tbody>
+        <!--挖坑-->
+       
+        
+        </tbody>
+      </table>
+      <div class='text-right'>
+        <!--分页的盒子-->
+        <ul id='paginator'></ul>
+      </div>
     </div>
   </div>
 </div>
@@ -90,12 +110,100 @@
     </div>
   </div>
 </div>
+<!--添加二级分类的模态框-->
+<div class="modal fade " id='addModal' >
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ><span>&times;</span></button>
+        <h4 class="modal-title">添加分类</h4>
+      </div>
+      <form id='form'>
+        <div class="modal-body">
+          <!--需要一个表单-->
+          <div class="form-group">
+            <!--下拉菜单-->
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                <span class='dropdown-text'>请选择一级分类</span>
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <!--挖个抗 一级数据要动态渲染-->
+                
+              </ul>
+              <!--设置这个隐藏域是为了存储一级分类的id，通过form表单获取发送给服务器-->
+              <input type="hidden" name='categoryId' id='categoryId'>
+            </div>
+          </div>
+          <div class="form-group">
+              <input type="text" class="form-control" placeholder="请选择二级分类的名称" name='brandName'>
+          </div>
+          <!--上传图片-->
+          <div class="form-group">
+             <div class="fileupload_box">
+                <button class='btn btn-default'>上传图片</button>
+                <!--
+                   id: 为了方便获取
+                   type:file: 才能上传文件
+                   name: 后端才能通过name属性获取文件
+                   data-url: 指定图片上传时的接口地址
+                   multiple:多文件上传
+                  -->
+                <input type="file" id='fileupload' name='pic1' data-url='/category/addSecondCategoryPic'>
+             </div>
+          </div>
+          <!--显示的图片-->
+          <div class="form-group img-box">
+            <img src="images/none.png" alt="" width='100' height='100'>
+            <!--这个隐藏域是为了存储品牌图片Logo的地址 也是为了给后台传brandLogo这个值-->
+            <input type="hidden" name='brandLogo' id='brandLogo'>
+            <!--这个隐藏域是为了给后台传hot这个值-->
+            <input type="hidden" name='hot' value='1'>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <!-- form="form" 让按钮跟上面表单关联上了，效果就是相当于写在form内部。-->        <!--button的类型要是button不会提交表单，必须是submit才会提交表单-->
+          <button type="submit" class="btn btn-primary">添加</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
+<!--准备二级分类表格的模板-->
+<script type='text/template' id='tpl'>
+  {{ each rows $v $i}}
+  <tr>
+    <td>{{(page-1)*size+$i+1}}</td>
+    <td>{{$v.categoryName}}</td>
+    <td>{{$v.brandName}}</td>
+    <td>
+      <img src="{{$v.brandLogo?$v.brandLogo:images/none.png}}" alt="" width='50' height='50'>
+    </td>
+  </tr>
+  {{/each}}
+</script>
+<!--下拉选择一级分类的选择框的模板-->
+<script type='text/html' id='cateGory_tmp'>
+  {{each rows $v $i}}
+  <li><a href="javascript:;" data-id={{$v.id}}>{{$v.categoryName}}</a></li>
+  {{/each}}
+</script>
+
 <script src='libs/jquery/jquery.js'></script>
 <script src='libs/bootstrap/js/bootstrap.js'></script>
 <script src='libs/bootstrap-validator/js/bootstrapValidator.js'></script>
+<script src='libs/bootstrap-paginator/bootstrap-paginator.js'></script>
 <script src='libs/nprogress/nprogress.js'></script>
 <script src='libs/echarts/echarts.min.js'></script>
+<script src='libs/artTemplate/template-web.js'></script>
+<!-- jquery ui小部件，上传插件依赖了jquery ui的小部件 -->
+<script src='libs/jquery-fileupload/jquery.ui.widget.js'></script>
+<!-- jquery上传插件 -->
+<script src='libs/jquery-fileupload/jquery.fileupload.js'></script>
 <script src='js/common.js'></script>
+<script src='js/second.js'></script>
