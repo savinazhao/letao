@@ -1,0 +1,46 @@
+/*分类页主体区域左侧分类的样式*/
+.category_left {
+  width: 90px;
+  height: 100%;
+  background-color: #fff;
+  float: left;
+  /*这是为了内部区域滚动的父容器是绝对定位*/
+  position: relative;
+}
+.category_left li a {
+   display: block;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-right: solid 1px red;
+  border-bottom:  solid 1px red;
+  background-color: pink;
+}
+.category_left li.now a {
+  border-right: none;
+  background-color: #fff;
+}
+/*分类页的主体区域右侧的样式*/
+.category_right {
+  height: 100%;
+  background-color: #fff;
+  overflow: hidden;
+  position: relative;
+}
+.category_right li {
+  float: left;
+  width: 33.33%;
+}
+.category_right li img {
+  width: 62px;
+  height: 62px;
+  margin: 0 auto;
+}
+.category_right li p {
+  text-align: center;
+}
+/*提示信息的样式*/
+.tips {
+  padding: 10px;
+  color: #000;
+}

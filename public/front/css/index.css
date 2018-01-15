@@ -1,0 +1,30 @@
+/*主体区域的导航样式*/
+.lt_nav {
+  padding: 10px;
+}
+.lt_nav li {
+  float: left;
+  width: 33.33%;
+}
+/*产品区域的样式*/
+.lt_product {
+  padding: 10px;
+}
+.lt_product a {
+  float: left;
+  width: 48%;
+  border: solid 1px #ccc;
+  background-color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+.lt_product a:nth-child(odd) {
+  margin-right: 4%;
+}
+.lt_product p span:nth-child(1) {
+  color:red;
+}
+.lt_product  p span:nth-child(2) {
+  text-decoration: line-through;
+}
