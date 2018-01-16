@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <title>乐淘商城-分类页</title>
+  <title>乐淘商城-搜索中心</title>
   <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="libs/mui/css/mui.css">
   <link rel="stylesheet" href="libs/fa/css/font-awesome.css">
   <link rel="stylesheet" href="css/common.css">
-  <link rel="stylesheet" href="css/category.css">
+  <link rel="stylesheet" href="css/search.css">
 </head>
 <body>
 <div class="lt_container">
@@ -18,36 +18,19 @@
     <a href="javascript:history.go(-1)" class='icon-left'>
       <span class='fa fa-chevron-left'></span>
     </a>
-    <h4>乐淘分类</h4>
-    <a href="search.html" class='icon-right'>
-      <span class='fa fa-search'></span>
-    </a>
-  
+    <h4>搜索中心</h4>
   </div>
   <!--乐淘首页主体部分-->
   <div class="lt_main">
     <!--这里分为左右两边的区域滚动-->
-  
-    <div class="category_left">
-      <!--左侧区域滚动-->
-      <div class="mui-scroll-wrapper">
-        <ul class="mui-scroll">
-          <!--这里放置真实显示的DOM内容-->
-          <!--挖个抗-->
-         
-          
-        </ul>
-      </div>
+    <!--乐淘搜索-->
+    <div class="lt_search">
+      <input type="text" placeholder='请输入搜索关键字' class='search_text'>
+      <button class='mui-btn mui-btn-primary search_btn'>搜索</button>
     </div>
-    <div class="category_right">
-      <!--右侧区滚动-->
-      <div class="mui-scroll-wrapper">
-        <ul class="mui-scroll">
-          <!--这里放置真实显示的DOM内容-->
-          <!--挖个抗-->
-         
-        </ul>
-      </div>
+    <!--乐淘搜索历史记录-->
+    <div class="lt_history">
+      <!--挖个坑-->
     </div>
   
   </div>
@@ -60,7 +43,7 @@
           <p>首页</p>
         </a>
       </li>
-      <li class='active'>
+      <li>
         <a href="category.html">
           <span class='fa fa-bars'></span>
           <p>分类</p>
@@ -84,25 +67,27 @@
 </div>
 </body>
 </html>
-<!--=一级分类列表的模板-->
-<script type='text/template' id='tpl_left'>
-  {{ each rows $v $i}}
-  <li class="{{$i==0?'now':''}}" data-id='{{$v.id}}'><a href="javascript:;">{{$v.categoryName}}</a></li>
-  {{/each}}
-</script>
-<!--二级分类商品品牌的数据模板-->
-<script type='text/template' id='tpl_right'>
-    {{ if total== 0}}
-    <p class='tips'>该分类下没有更多的品牌信息</p>
+<!--搜索历史记录的数据模板-->
+<script type='text/template' id='tpl'>
+    {{if list.length==0}}
+    <p>没有历史记录</p>
     {{/if}}
-  {{ each rows $v $i}}
-  <li>
-    <a href="#">
-      <img src="{{$v.brandLogo?$v.brandLogo:'images/none.png'}}" alt="">
-      <p>{{$v. brandName}}</p>
-    </a>
-  </li>
-  {{/each}}
+    {{if list.length>0}}
+  <div class="title mui-clearfix">
+    <span class='mui-pull-left'>搜索历史</span>
+    <span class='mui-pull-right fa fa-trash btn_empty'>清空记录</span>
+  </div>
+  <div class="content">
+    <ul>
+      {{each list $v $i}}
+      <li class='mui-clearfix'>
+        <a href="searchList.html?key={{$v}}" class='mui-pull-left'>{{$v}}</a>
+        <span class='mui-icon mui-icon-closeempty mui-pull-right btn-delete' data-index={{$i}}></span>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+  {{/if}}
 </script>
 <!--前端类似jquey的插件zepto-->
 <script src='libs/zepto/zepto.min.js'></script>
@@ -110,4 +95,4 @@
 <script src='libs/mui/js/mui.js'></script>
 <script src='libs/artTemplate/template-web.js'></script>
 <script src='js/common.js'></script>
-<script src='js/category.js'></script>
+<script src='js/search.js'></script>

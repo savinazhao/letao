@@ -88,3 +88,50 @@ img {
   margin-bottom: 0;
   color: #fff;
 }
+
+/*产品区域的样式*/
+.lt_product {
+  padding: 10px;
+}
+.lt_product a {
+  float: left;
+  width: 48%;
+  border: solid 1px #ccc;
+  background-color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+.lt_product a:nth-child(odd) {
+  margin-right: 4%;
+}
+.lt_product p span:nth-child(1) {
+  color:red;
+}
+.lt_product  p span:nth-child(2) {
+  text-decoration: line-through;
+}
+.lt_product .proName {
+  height: 42px;
+}
+/*乐淘搜索样式*/
+.lt_search {
+  padding: 10px;
+  position: relative;
+}
+.lt_search .search_text {
+  height: 34px;
+  margin: 0;
+  line-height: 34px;
+  font-size: 12px;
+  border: solid 1px #007aff;
+  border-radius: 5px;
+  padding: 0;
+  padding-left: 15px;
+}
+.lt_search .search_btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border-radius: 0 5px 5px 0;
+}

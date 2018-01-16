@@ -1,0 +1,28 @@
+@charset "utf-8";
+.lt_main {
+  background-color: #fff;
+}
+.lt_padding {
+  padding: 10px;
+  border-top: solid 1px #ccc;
+}
+.lt_price .price {
+  color: red;
+}
+.lt_price .oldPrice {
+   color: #666;
+  font-size: 12px;
+  text-decoration: line-through;
+}
+.lt_size  span {
+   padding: 5px;
+  font-size: 12px;
+  background-color: #f5f5f5;
+   border: solid 1px #ccc;
+  line-height: 30px;
+}
+.lt_num span {
+  font-size: 12px;
+  color: #666;
+}
+

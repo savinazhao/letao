@@ -1,0 +1,39 @@
+@charset "utf-8";
+.lt_main {
+  background-color: #fff;
+}
+.lt_sort {
+  height: 30px;
+  line-height: 30px;
+  background-color: #eee;
+  padding: 0 10px;
+  font-size: 12px;
+}
+.lt_sort a {
+  float: left;
+  width: 25%;
+  color: #666;
+  text-align: center;
+}
+.lt_sort a.now {
+  color: darkorange;
+}
+.lt_product .loading {
+  width: 40px;
+  height: 40px;
+  border: solid 3px #007aff;
+  position: absolute;
+  left: 50%;
+  /*transform: translateX(-50%);*/
+  margin-left: -20px;
+  top: 200px;
+  animation: play 1s infinite;
+}
+@keyframes play {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
