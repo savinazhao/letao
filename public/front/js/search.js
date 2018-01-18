@@ -51,6 +51,10 @@ $(function () {
     var key = $('.search_text').val().trim();
     //清空搜索框
     $('.search_text').val('');
+    if(!key) {
+      mui.toast('请输入搜索关键字');
+      return;
+    }
      // 获取localStorage 的值
     var arr = getHistory();
     //判断数组中是否有这个关键词

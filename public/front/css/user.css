@@ -1,0 +1,9 @@
+@charset "utf-8";
+.logout_box {
+  width: 100%;
+  padding:  10px;
+}
+/*退出登录按钮*/
+.btn_logout {
+   width: 100%;
+}

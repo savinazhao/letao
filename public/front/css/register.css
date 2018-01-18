@@ -1,0 +1,28 @@
+@charset "utf-8";
+.myform {
+  padding: 10px;
+}
+.myform .vCode {
+    width: 65%;
+}
+.myform .btn_getCode {
+  width: 30%;
+  padding: 0;
+  height: 40px;
+  line-height: 40px;
+}
+.myform .btn_register {
+  width: 100%;
+  padding: 0;
+  height: 40px;
+  line-height: 40px;
+}
+.tips {
+  font-size: 12px;
+  padding: 0 10px;
+}
+.btn_getCode.disabled {
+  background-color: #ccc;
+  border-color: #ccc;
+  color: #fff;
+}

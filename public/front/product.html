@@ -34,36 +34,14 @@
       </div>
     </div>
   </div>
-  <!--乐淘首页底部-->
-  <div class="lt_footer">
-    <ul class='mui-clearfix'>
-      <li>
-        <a href="index.html">
-          <span class='fa fa-home'></span>
-          <p>首页</p>
-        </a>
-      </li>
-      <li>
-        <a href="category.html">
-          <span class='fa fa-bars'></span>
-          <p>分类</p>
-        </a>
-      
-      </li>
-      <li>
-        <a href="cart.html">
-          <span class='fa fa-shopping-cart'></span>
-          <p>购物车</p>
-        </a>
-      </li>
-      <li>
-        <a href="user.html">
-          <span class='fa fa-user'></span>
-          <p>会员中心</p>
-        </a>
-      </li>
-    </ul>
-  </div>
+  <!--去购物车-->
+   <div class="lt_go_cart">
+     <a href="cart.html" class='mui-btn mui-btn-link'>去购物车</a>
+     <div class='mui-pull-right'>
+       <button class='mui-btn mui-btn-danger btn_add-cart'>加入购物车</button>
+       <button class='mui-btn mui-btn-warning'>立即购买</button>
+     </div>
+   </div>
 </div>
 </body>
 </html>
@@ -116,9 +94,9 @@
   <!--数量-->
   <div class="lt_num lt_padding">
     数量:
-    <div class="mui-numbox" data-numbox-step='1' data-numbox-min='0' data-numbox-max='{{num}}'>
+    <div class="mui-numbox" data-numbox-step='1' data-numbox-min='1' data-numbox-max='{{num}}'>
       <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
-      <input class="mui-numbox-input" type="number" />
+      <input class="mui-numbox-input" type="number" value='1'/>
       <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
     </div>
     <span>剩余数量:{{num}}双</span>
